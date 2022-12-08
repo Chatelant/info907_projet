@@ -13,4 +13,5 @@ A chaque fois que vous générez un nouvel affichage, ouvrer la page html associ
 - **3** : Affiche les genres d'animé réalisé par chaque studio (ne fonctionne pas sur dbpedia
 - **4** :4 Affiche les noms des animé originaux fait par chaque studio (ne fonctionne pas sur wikidata)
 - **5** : Affiche l'ensemble animes, studios et genres
-- **6** : Termine le programme
+- **6** : Affiche différentes statistiques
+- **7** : Termine le programme

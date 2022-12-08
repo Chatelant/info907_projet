@@ -31,7 +31,7 @@ def dbpedia_anime():
         ?x rdf:type dbo:Anime;
             dbp:name ?name.
         }
-        Order by ?anime
+        Order by ?name
     '''
 
 # 2 request dbpedia

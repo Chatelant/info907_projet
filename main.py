@@ -20,24 +20,29 @@ def execution(numReq : str):
 
     # Display the graph
     if numReq == '1':
+        print("Using the source : " + sys.argv[1])
         make_request()
         generate_graph_anime()
         print("anime.html generated\n")
     elif numReq == '2':
+        print("Using the source : " + sys.argv[1])
         make_request()
         generate_graph_anime_and_studios()
         print("animestudios.html generated\n")
     elif numReq == '3':
         sys.argv[1] = 'wikidata'
+        print("Using the source : " + sys.argv[1])
         make_request()
         generate_graph_studios_and_genres()
         print("studiogenres.html generated\n")
     elif numReq == '4':
         sys.argv[1] = 'dbpedia'
+        print("Using the source : " + sys.argv[1])
         make_request()
         generate_graph_anime_and_studios()
         print("animestudios.html generated\n")
     elif numReq == '5': 
+        print("Using the source : " + sys.argv[1])
         generate_graph_complete()
         print("animestudiogenre.html generated\n")
     elif numReq == '6': 
