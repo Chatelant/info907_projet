@@ -7,10 +7,9 @@ import re
 
 
 def make_request():
-    print("Hello ")
     # Check that the number of argument is 2
     if(len(sys.argv) != 3):
-        print("Use 2 parameter: 1 for the source (wikidata or dbpedia), and 1 for the querry (1 to 3)")
+        print("Use 2 parameter: 1 for the source (wikidata or dbpedia), and 1 for the querry (1 to 4)")
         print("For exemple:")
         print("\"python main.py wikidata 1\"")
         exit()
@@ -30,6 +29,10 @@ def make_request():
 
     # Get the querry depending on the number
     query = get_querry(source, num_querry)
+
+    if(query == "Error"):
+        print("The query is not valid, make sure to read the README file")
+        exit()
  
     # Create the csv writer
     f = open('temp.csv', 'w',newline='')
@@ -55,6 +58,15 @@ def make_request():
         decoded_content = r.content.decode('utf-8')
         data = json.loads(decoded_content)
 
+        # Write the header
+        if(num_querry == 1):
+            writer.writerow(['animeLabel'])
+        else:
+            if(num_querry == 2):
+                writer.writerow(['studioLabel', 'animeLabel'])
+            else:
+                writer.writerow(['studioLabel', 'genreLabel'])
+        
         for row in data['results']['bindings']:
             # Depending on the number of the querry, change the attribut name
             if(num_querry == 1):

@@ -18,7 +18,7 @@ def get_querry(source, num):
         if(num == 2):
             # Return la querry dbpedia pour avoir tous les animes et leurs studios
             return dbpedia_anime_studio()
-        if(num == 3):
+        if(num == 4):
             # Return la querry dbpedia pour avoir tous les studios et leurs animes originaux 
             return dbpedia_anime_genre()
     return "Error"

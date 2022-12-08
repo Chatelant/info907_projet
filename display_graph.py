@@ -3,8 +3,62 @@ from pyvis.network import Network
 import networkx as nx
 
 
+# --- GRAPH ANIME ONLY ---
+def generate_graph_anime():
+    nx_graph = nx.Graph()
+    df = pd.read_csv('temp.csv')
+    size = len(df.values)
+
+    for i in range(size):
+        nx_graph.add_node(i, size=15, label=df.values[i][0], group=3)
+    
+    nt = Network('720','1500')
+    nt.from_nx(nx_graph)
+    nt.show('anime.html')
+
+
+# --- GRAPH ANIME AND STUDIOS ---
+def generate_graph_anime_and_studios():
+    nx_graph = nx.Graph()
+    df = pd.read_csv('sparql_data.csv')
+
+    size = len(df.values)
+
+    studio_nodes_info = {}
+    for i in range(size):
+        label = df.values[i][0]
+        if not studio_nodes_info.get(label):
+            nx_graph.add_node(i, size=15, label=label, group=2)
+            studio_nodes_info[label] = i
+
+    for i in range(size):
+        if studio_nodes_info.get(df.values[i][0]):
+            nx_graph.add_node(i + size, size=15, label=df.values[i][1], group=3)
+            nx_graph.add_edge(studio_nodes_info.get(df.values[i][0]), i + size, weight=3)
+    
+    nt = Network('720','1500')
+    nt.from_nx(nx_graph)
+    nt.show('animestudios.html')
+
+
+# --- GRAPH STUDIOS AND GENRES --- 
+def generate_graph_studios_and_genres():
+    nx_graph = nx.Graph()
+    df = pd.read_csv('studio_genres.csv')
+
+    size = len(df.values)
+
+    genre_nodes_infos = _set_genre_nodes(nx_graph, df, size)
+    studio_nodes_info = _set_studio_nodes(nx_graph, df, size, genre_nodes_infos)
+    
+    nt = Network('720','1500')
+    nt.from_nx(nx_graph)
+    nt.show('studiosgenres.html')
+
+
+# --- GRAPH ANIME, STUDIOS AND GENRES ---
 # Fonction principale : initialise et affiche le graphe dans index.html
-def generate_graph():
+def generate_graph_complete():
     df_ani_stu = pd.read_csv('sparql_data.csv')
     df_stu_gen = pd.read_csv('studio_genres.csv')
 
@@ -13,8 +67,8 @@ def generate_graph():
     
     nt = Network('720','1500')
     nt.from_nx(nx_graph)
-    nt.show('index.html')
-    
+    nt.show('animestudiogenre.html')
+
 
 # Initialise les noeuds et relations du graphe
 # Noeuds : Group 1 = Genre, Group 2 = Studio, Group 3 = Anime
