@@ -4,7 +4,7 @@ import pandas as pd
 def display_stats():
 
     # Stats sur dbpedia
-    print('Information about Dbpedia')
+    print('\nInformation about Dbpedia')
     ## Requete 1 - Stats
     sys.argv[1] = "dbpedia"
     sys.argv[2] = 1
@@ -45,7 +45,7 @@ def display_stats():
     print("Number of adaptated anime : " + str(nbAnime - len(df)) + " - it's " + str(round((nbAnime - len(df))/nbAnime, 2)))
     
     # Stats sur dbpedia
-    print('Information about Wikidata')
+    print('\nInformation about Wikidata')
     ## Requete 1 - Stats
     sys.argv[1] = "wikidata"
     sys.argv[2] = 1
