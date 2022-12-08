@@ -17,7 +17,9 @@ def make_request():
     # Get the parameter
     source = sys.argv[1]
     num_querry = int(sys.argv[2])
-
+    
+    print(f"source utilisées : {source}")
+    
     # Change the source depending on the paramter
     if(source == 'dbpedia'):
         url = 'https://dbpedia.org/sparql'

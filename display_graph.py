@@ -20,7 +20,7 @@ def generate_graph_anime():
 # --- GRAPH ANIME AND STUDIOS ---
 def generate_graph_anime_and_studios():
     nx_graph = nx.Graph()
-    df = pd.read_csv('sparql_data.csv')
+    df = pd.read_csv('temp.csv')
 
     size = len(df.values)
 
@@ -110,4 +110,3 @@ def _set_genre_nodes(graph, df, size):
             graph.add_node(i, size=15, label=label, group=1)
             genre_nodes_info[label] = i
     return genre_nodes_info
-
