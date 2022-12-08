@@ -1,15 +1,18 @@
 import sys
+from stats import *
 from display_graph import generate_graph_complete, generate_graph_anime, generate_graph_anime_and_studios,generate_graph_studios_and_genres
 from make_request import make_request
 
 def printMenu():
+    print("\n\n================================\n")
     print("0 - Set src (default ...)")
     print("1 - Display animes (Q1)")
     print("2 - Display studios & animes (Q2)")
     print("3 - Display studios & genres (Q3) /!\ only with wikidata")
     print("4 - Display originals animes for each studio /!\ only with dbpedia")
     print("5 - Display all")
-    print("6 - exit")
+    print("6 - Display some stats")
+    print("7 - exit")
 
 def execution(numReq : str):
     if numReq == '1' or numReq == '2' or numReq == '3' or numReq == '4':
@@ -37,6 +40,8 @@ def execution(numReq : str):
     elif numReq == '5': 
         generate_graph_complete()
         print("animestudiogenre.html generated\n")
+    elif numReq == '6': 
+        display_stats()
     
 if __name__ == "__main__":
     sys.argv += ['wikidata']
@@ -67,16 +72,8 @@ if __name__ == "__main__":
             case '5':
                 execution('5') 
             case '6':
+                execution('6') 
+            case '7':
                 fin = True
             case _:
                 pass
-        
-            
-        
-        
-        
-        
-    
-    
-    
-    
