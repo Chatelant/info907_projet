@@ -41,8 +41,8 @@ def display_stats():
     sys.argv[2] = 4
     make_request()
     df = pd.read_csv('temp.csv')
-    print("Number of original anime : " + str(len(df)) + " - it's " + str(round(len(df)/nbAnime, 2)))
-    print("Number of adaptated anime : " + str(nbAnime - len(df)) + " - it's " + str(round((nbAnime - len(df))/nbAnime, 2)))
+    print("Number of original anime : " + str(len(df)) + "\nIt's " + str(round(len(df)/nbAnime * 100)) + "%")
+    print("Number of adaptated anime : " + str(nbAnime - len(df)) + "\nIt's " + str(round((nbAnime - len(df))/nbAnime*100)) + "%")
     
     # Stats sur dbpedia
     print('\nInformation about Wikidata')
