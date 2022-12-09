@@ -3,6 +3,7 @@ from stats import *
 from display_graph import generate_graph_complete, generate_graph_anime, generate_graph_anime_and_studios,generate_graph_studios_and_genres
 from make_request import make_request
 
+# Display the menu
 def printMenu():
     print("\n\n================================\n")
     print("0 - Set src (default ...)")
@@ -14,6 +15,7 @@ def printMenu():
     print("6 - Display some stats")
     print("7 - exit")
 
+# Execute the make_request and generate a visualisation
 def execution(numReq : str):
     if numReq == '1' or numReq == '2' or numReq == '3' or numReq == '4':
         sys.argv[2] = numReq
@@ -47,7 +49,8 @@ def execution(numReq : str):
         print("animestudiogenre.html generated\n")
     elif numReq == '6': 
         display_stats()
-    
+
+# Main function    
 if __name__ == "__main__":
     sys.argv += ['wikidata']
     sys.argv += ['1']
